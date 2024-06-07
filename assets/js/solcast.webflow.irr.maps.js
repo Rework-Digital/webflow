@@ -73,33 +73,18 @@ function updateImageSrc(locationId) {
         const imageElement = document.getElementById(locationId);
         if (imageElement) {
           imageElement.src = thumbnailUrl;
-          console.log(`Image src updated to: ${thumbnailUrl}`); // Log the new src URL
+          //console.log(`Image src updated to: ${thumbnailUrl}`); // Log the new src URL
         } else {
-          console.error('Image element not found for the provided location ID');
+          return;
+          //console.error('Image element not found for the provided location ID');
         }
       } else {
-        console.error('No files found in the API response');
+        return;
+        //console.error('No files found in the API response');
       }
     })
-    .catch(error => {
-      console.error('Failed to fetch data from API:', error);
-    });
-}
-
-/* Move Glabal Card to First Position */
-// Function to add a class to a div with a specific custom attribute value
-function addClassToDiv() {
-  // Find the div with the custom attribute cardid="global"
-  const divElement = document.querySelector('div[cardid="global"]');
-
-  // Check if the div exists
-  if (divElement) {
-    // Add the class 'layout-first-item' to the div
-    divElement.classList.add('layout-first-item');
-    console.log('Class added successfully.');
-  } else {
-    // Log a message if no such div was found
-    console.error('No div found with cardid="global"');
     return;
-  }
+    //.catch(error => {
+      //console.error('Failed to fetch data from API:', error);
+    });
 }
