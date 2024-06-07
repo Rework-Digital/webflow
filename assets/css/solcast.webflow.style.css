@@ -701,10 +701,6 @@ table tbody tr:last-child td:last-child{
 }
 
 /* Irr Map Location Styling */
-#mapDate:after {
-	content: attr(data-date);
-}
-
 #gallery-list-section .w-embed {
   display: none;
 }

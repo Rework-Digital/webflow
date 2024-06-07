@@ -32,29 +32,55 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 /* Latest World Map Embed */
-// This function formats the date and time in the required format
-function formatDateTimeUTC() {
-  const now = new Date(); // Gets the current date and time
-  const year = now.getUTCFullYear();
-  const month = String(now.getUTCMonth() + 1).padStart(2, '0'); // Adds 1 because months start at 0
-  const day = String(now.getUTCDate()).padStart(2, '0');
-  const hours = String(now.getUTCHours()).padStart(2, '0');
-  const minutes = String(now.getUTCMinutes()).padStart(2, '0');
-  // Format: YYYY-MM-DDTHH:MM:00
-  return `${year}-${month}-${day}T${hours}:${minutes}:00`;
-}
+function fetchLatestVideoUrl() {
+  // Get the div element with class mapEmbed
+  const mapEmbedDiv = document.querySelector('.mapembed');
+  if (!mapEmbedDiv) {
+    return;
+  }
 
-// This function updates the video URLs
-function updateVideoUrls() {
-  const dateTime = formatDateTimeUTC(); // Get the current formatted UTC date and time
-  const baseUrl = 'https://media.solcast.com/latest/global/1280x720';
-  // Update the poster and src attributes
-  const videoElement = document.querySelector('.hero_video');
-  videoElement.setAttribute('poster', `${baseUrl}.jpg?time=${dateTime}`);
-  videoElement.setAttribute('src', `${baseUrl}.mp4?time=${dateTime}`);
-}
+  // Extract the ID from the div
+  // const mapId = mapEmbedDiv.id;
+  // Define the API URL
+  const globalUrl = 'https://api.solcast.com.au/media/global?format=json';
 
-document.addEventListener('DOMContentLoaded', updateVideoUrls);
+  fetch(globalUrl)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then((data) => {
+      if (!data || !data.files || !data.files.length) {
+        return;
+      }
+
+      // Initialize variables to track the latest date and corresponding video URL
+      let latestDate = new Date(0); // Epoch date
+      let videoUrl = '';
+
+      // Iterate through each file entry to find the latest date
+      data.files.forEach((file) => {
+        const fileDate = new Date(file.id); // Assuming 'id' holds the date in YYYY-MM-DD format
+        if (fileDate > latestDate) {
+          latestDate = fileDate;
+          videoUrl = file.video_url; // Update video URL if this entry has the latest date
+        }
+      });
+
+      // Update the date display
+      const dateElement = document.getElementById('mapDate');
+      dateElement.setAttribute('data-date', latestDate.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }));
+
+      // Check if there is a video element with class 'hero_video' and update its 'src'
+      const videoElement = document.querySelector('.hero_video');
+      if (videoElement) {
+        videoElement.src = videoUrl;
+        videoElement.load();
+      }
+    });
+}
 
 /* StatusPal.io required script */
 window.statuspalWidget = {
