@@ -82,6 +82,8 @@ function fetchLatestVideoUrl() {
     });
 }
 
+document.addEventListener('DOMContentLoaded', fetchLatestVideoUrl);
+
 /* StatusPal.io required script */
 window.statuspalWidget = {
   subdomain: 'solcast-com',
