@@ -103,4 +103,3 @@ function addClassToDiv() {
     console.error('No div found with cardid="global"');
   }
 }
-document.addEventListener('DOMContentLoaded', addClassToDiv);
