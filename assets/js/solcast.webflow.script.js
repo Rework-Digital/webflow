@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
 /* Latest World Map Embed */
 function fetchLatestVideoUrl() {
   // Get the div element with class mapEmbed
-  const mapEmbedDiv = document.querySelector('.mapembed');
+  const mapEmbedDiv = document.querySelector('.embed-map');
   if (!mapEmbedDiv) {
     return;
   }
