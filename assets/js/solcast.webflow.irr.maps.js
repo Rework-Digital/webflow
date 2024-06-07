@@ -51,8 +51,6 @@ function fetchLatestVideoUrl() {
     });
 }
 
-// Call fetchLatestVideoUrl when the document is loaded
-document.addEventListener('DOMContentLoaded', fetchLatestVideoUrl);
 
 // /* Location Images */
 // // Function to update the image source with the thumbnail URL from the API response
