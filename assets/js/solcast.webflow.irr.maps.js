@@ -86,19 +86,20 @@ function updateImageSrc(locationId) {
     });
 }
 
-/* Move Glabal Card to First Position */
-// Function to add a class to a div with a specific custom attribute value
-function addClassToDiv() {
-  // Find the div with the custom attribute cardid="global"
-  const divElement = document.querySelector('div[cardid="global"]');
+// /* Move Glabal Card to First Position */
+// // Function to add a class to a div with a specific custom attribute value
+// function addClassToDiv() {
+//   // Find the div with the custom attribute cardid="global"
+//   const divElement = document.querySelector('div[cardid="global"]');
 
-  // Check if the div exists
-  if (divElement) {
-    // Add the class 'layout-first-item' to the div
-    divElement.classList.add('layout-first-item');
-    console.log('Class added successfully.');
-  } else {
-    // Log a message if no such div was found
-    console.error('No div found with cardid="global"');
-  }
-}
+//   // Check if the div exists
+//   if (divElement) {
+//     // Add the class 'layout-first-item' to the div
+//     divElement.classList.add('layout-first-item');
+//     console.log('Class added successfully.');
+//   } else {
+//     // Log a message if no such div was found
+//     console.error('No div found with cardid="global"');
+//     return;
+//   }
+// }
