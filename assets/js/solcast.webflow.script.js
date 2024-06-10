@@ -85,7 +85,12 @@ function fetchLatestVideoUrl() {
     });
 }
 
-document.addEventListener('DOMContentLoaded', fetchLatestVideoUrl);
+document.addEventListener('DOMContentLoaded', function() {
+  // Check if there is a div with the class 'map-embed'
+  if (document.querySelector('.embed-map')) {
+      fetchLatestVideoUrl();
+  }
+});
 
 /* StatusPal.io required script */
 window.statuspalWidget = {
