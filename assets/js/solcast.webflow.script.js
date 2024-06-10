@@ -85,10 +85,10 @@ function fetchLatestVideoUrl() {
     });
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
   // Check if there is a div with the class 'map-embed'
   if (document.querySelector('.embed-map')) {
-      fetchLatestVideoUrl();
+    fetchLatestVideoUrl();
   }
 });
 
