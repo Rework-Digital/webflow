@@ -2,34 +2,37 @@
 
 /* Splide Script */
 document.addEventListener('DOMContentLoaded', () => {
-  new Splide('.splide', {
-    type: 'loop',
-    drag: 'free',
-    focus: 'center',
-    perPage: 9,
-    autoWidth: false,
-    pauseOnHover: true,
-    pauseOnFocus: true,
-    autoScroll: {
-      speed: 0.8,
-    },
-    breakpoints: {
-      1100: {
-        perPage: 6,
-      },
-      760: {
-        perPage: 4,
-      },
-      580: {
-        perPage: 3,
-      },
-      400: {
-        perPage: 2,
-      },
-    },
-  }).mount(window.splide.Extensions);
-});
+  const splideElement = document.querySelector('.splide');
 
+  if (splideElement) {
+    new Splide('.splide', {
+      type: 'loop',
+      drag: 'free',
+      focus: 'center',
+      perPage: 9,
+      autoWidth: false,
+      pauseOnHover: true,
+      pauseOnFocus: true,
+      autoScroll: {
+        speed: 0.8,
+      },
+      breakpoints: {
+        1100: {
+          perPage: 6,
+        },
+        760: {
+          perPage: 4,
+        },
+        580: {
+          perPage: 3,
+        },
+        400: {
+          perPage: 2,
+        },
+      },
+    }).mount(window.splide.Extensions);
+  }
+});
 
 /* Latest World Map Embed */
 function fetchLatestVideoUrl() {
